@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 11:58:39 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/03 18:14:48 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:12:31 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new, int nbr)
 	{
 		last = ft_lstlast(*lst);
 		last->next = new;
-		new->nbr = nbr;
-		new->next = NULL;
 	}
+	new->nbr = nbr;
+	new->next = NULL;
+	printf("%d\n", new->nbr);
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new, int nbr)
@@ -92,11 +93,11 @@ void	ft_lstadd_pos(t_list **lst, t_list *new, int nbr, int pos)
 
 int	main()
 {
-	t_list	*head;
+	t_list	*head = NULL;
 	t_list	*new;
 	t_list	*ptr;
 
-	head = malloc(sizeof(t_list));
+	/*head = malloc(sizeof(t_list));
 	if (!head)
 		return (1);
 	head->nbr = 5;
@@ -110,17 +111,16 @@ int	main()
 	new = malloc(sizeof(t_list));
 	new->nbr = 8;
 	head->next->next = new;
-	new->next = NULL;
+	new->next = NULL;*/
 
 
 //	***** add back *****
-
 	ptr = head;
 	new = malloc(sizeof(t_list));
 	ft_lstadd_back(&ptr, new, 9);
-	
+
 //	***** add pos *****
-	new = malloc(sizeof(t_list));
+	/*new = malloc(sizeof(t_list));
 	ptr = head;
 	ft_lstadd_pos(&ptr, new, 7, 3);
 
@@ -128,9 +128,9 @@ int	main()
 	new = malloc(sizeof(t_list));
 	ft_lstadd_front(&head, new, 4);
 	ptr = head;
-	ft_lstprint(ptr);
+	ft_lstprint(ptr);*/
 	
-	printf("size = %d\n", ft_lstsize(head));
+	//printf("size = %d\n", ft_lstsize(head));
 	
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/07/03 18:42:49 by saguesse         ###   ########.fr        #
+#    Updated: 2022/07/18 17:17:55 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,14 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC =  \
+SRC =  push_swap.c \
+	ft_atoi.c \
+	ft_split.c \
+	ft_substr.c \
+	ft_moves_a.c \
+	ft_moves_b.c \
+
+
 
 HEADER = push_swap.h
 
