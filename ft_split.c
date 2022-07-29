@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 14:40:46 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/19 16:29:26 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/25 16:23:04 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	*check_malloc(char **str, int j)
 	return (str[j]);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, int *nb_words)
 {
 	int		nb_words;
 	int		i;

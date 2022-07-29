@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 09:51:29 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/20 16:59:15 by saguesse         ###   ########.fr       */
+/*   Created: 2022/07/20 18:32:14 by saguesse          #+#    #+#             */
+/*   Updated: 2022/07/20 18:32:57 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_list	*head;
+	int	i;
 
-	head = malloc(sizeof(t_list));
-	if (!head)
-		return (NULL);
-	head->content = content;
-	head->next = NULL;
-	return (head);
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && (s1[i] == s2[i]))
+		i++;
+	return (s1[i] - s2[i]);
 }

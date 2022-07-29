@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/07/18 17:17:55 by saguesse         ###   ########.fr        #
+#    Updated: 2022/07/20 18:33:16 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,9 @@ SRC =  push_swap.c \
 	ft_substr.c \
 	ft_moves_a.c \
 	ft_moves_b.c \
-
-
+	ft_lstclear.c \
+	ft_lstnew.c \
+	ft_strcmp.c \
 
 HEADER = push_swap.h
 

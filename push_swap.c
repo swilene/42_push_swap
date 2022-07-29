@@ -6,27 +6,40 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:52:26 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/19 18:32:49 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/21 15:44:21 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_checkargv(char *str)
+/*int	check_double(char ***nbr)
 {
-	int	i;	
+	char	*nb;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i])
-	{
-		if ((str[i] < '0' || str[i] > '9') && str[i] != ' ' && str[i] != '-' && str[i] != '+')
-			return (1);
-		i++;
-	}
-	return (0);
-}
+	j = 0;
+	nb = nbr[i][j];
+	while ()
 
-int	main(int argc, char **argv)
+}*/
+
+/*void	stack_a()
+{
+	t_list	*head;
+	t_list	*new;
+	t_list	*ptr;
+
+	head = ft_lstnew(nb);
+	ptr = head;
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	ft_lstadd_back(&ptr, new, nb);
+}*/
+
+char	*check_args(int	argc, char ** argv)
 {
 	int		i;
 	int		j;
@@ -35,36 +48,40 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	j = 0;
-	if (argc == 1)
-		return (1);
 	nbr = malloc(sizeof(nbr) * argc);
+	if (!nbr)
+		return (NULL);
 	while (i < argc)
 	{
-		if (ft_checkargv(argv[i]) == 1)
-		{
-			ft_putstr_fd("Error\n", 1);
-			return (1);
-		}
 		nbr[j] = ft_split(argv[i], ' ');
 		i++;
 		j++;
 	}
-	i = 0;
 	j = 0;
 	while (j < (argc - 1))
 	{
+		i = 0;
 		while (nbr[j][i] != NULL)
 		{
 			nb = ft_atoi(nbr[j][i]);
-			printf("%zd\n", nb);
 			if (nb < INT_MIN || nb > INT_MAX)
-			{
-				ft_putstr_fd("Error\n", 1);
-				return (1);
-			}
+				return (NULL);
+			printf("%zd\n", nb);
 			i++;
 		}
 		j++;
+	}
+	return (nbr[0][0]);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 1)
+		return (1);
+	if (check_args(argc, argv) == NULL)
+	{
+		ft_putstr_fd("Error\n", 2);
+		return (1);
 	}
 	return (0);
 }
