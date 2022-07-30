@@ -6,13 +6,13 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:52:26 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/30 13:26:54 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/30 15:53:34 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_checkdoubles(int size, t_list **lst)
+/*int	ft_checkdoubles(int size, t_list **lst)
 {
 	int	nbr;
 	t_list	*tmp;
@@ -113,7 +113,7 @@ char	*check_args(int	argc, char ** argv)
 	free(nbr);
 	ft_dellist(&head);
 	return ("ok");
-}
+}*/
 
 int	main(int argc, char **argv)
 {
