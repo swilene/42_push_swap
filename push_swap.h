@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:44:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/20 19:08:40 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/30 13:26:49 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ typedef struct s_list
 
 void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 ssize_t	ft_atoi(const char *nptr );
+t_list  *ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new, int nb);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-int	ft_strcmp(char *s1, char *s2);
+t_list  *ft_lstnew(int nbr);
+void	ft_dellist(t_list **lst);
+//void    ft_lstclear(t_list **lst, void (*del)(void *));
+//void    ft_lstdelone(t_list *lst, void (*del)(void *));
 
 #endif

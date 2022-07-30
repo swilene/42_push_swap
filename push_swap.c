@@ -6,45 +6,43 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:52:26 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/21 15:44:21 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/30 13:26:54 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*int	check_double(char ***nbr)
+int	ft_checkdoubles(int size, t_list **lst)
 {
-	char	*nb;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	nb = nbr[i][j];
-	while ()
-
-}*/
-
-/*void	stack_a()
-{
-	t_list	*head;
-	t_list	*new;
-	t_list	*ptr;
-
-	head = ft_lstnew(nb);
-	ptr = head;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	ft_lstadd_back(&ptr, new, nb);
-}*/
+	int	nbr;
+	t_list	*tmp;
+	
+	while (size > 0)
+	{
+		nbr = (*lst)->nb;
+		tmp = (*lst)->next;
+		while (tmp)
+		{
+			if (tmp->nb == nbr)
+				return (1);
+			tmp = tmp->next;
+		}
+		size--;
+		(*lst) = (*lst)->next;
+	}
+	return (0);
+}
 
 char	*check_args(int	argc, char ** argv)
 {
 	int		i;
 	int		j;
+	int		size;
 	char	***nbr;
 	ssize_t	nb;
+	t_list	*head;
+	t_list	*ptr;
+	t_list	*new;
 
 	i = 1;
 	j = 0;
@@ -54,24 +52,67 @@ char	*check_args(int	argc, char ** argv)
 	while (i < argc)
 	{
 		nbr[j] = ft_split(argv[i], ' ');
+		if (nbr[j] == NULL)
+		{
+			while (j >= 0)
+			{
+				free(nbr[j]);
+				j--;
+			}
+			free(nbr);
+			return (NULL);
+		}
 		i++;
 		j++;
 	}
 	j = 0;
+	size = 0;
+	head = NULL;
 	while (j < (argc - 1))
 	{
 		i = 0;
 		while (nbr[j][i] != NULL)
 		{
 			nb = ft_atoi(nbr[j][i]);
+			free(nbr[j][i]);
 			if (nb < INT_MIN || nb > INT_MAX)
+			{
+				free(nbr);
+				ft_dellist(&head);
 				return (NULL);
-			printf("%zd\n", nb);
+			}
+			if (i == 0 && j == 0)
+			{
+				head = ft_lstnew(nb);
+				if (head == NULL)
+				{
+					ft_dellist(&head);
+					return (NULL);
+				}
+			}
+			else
+			{
+				new = malloc(sizeof(t_list));
+				if (!new)
+				{
+					ft_dellist(&ptr);
+					return (NULL);
+				}
+				ptr = head;
+				ft_lstadd_back(&ptr, new, nb);
+			}
 			i++;
+			size++;
 		}
+		free(nbr[j]);
 		j++;
 	}
-	return (nbr[0][0]);
+	if (ft_checkdoubles(size, &ptr) == 1)
+		return (NULL);
+	printf("size = %d\n", size);
+	free(nbr);
+	ft_dellist(&head);
+	return ("ok");
 }
 
 int	main(int argc, char **argv)
