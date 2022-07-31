@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 11:41:55 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/21 16:32:30 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/07/31 11:31:41 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 ssize_t	ft_atoi(const char *nptr)
 {
 	ssize_t	nb;
-	int	neg;
 	size_t	i;
+	int		neg;
 
 	nb = 0;
 	neg = 1;
@@ -24,13 +24,11 @@ ssize_t	ft_atoi(const char *nptr)
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
-		{
-			if (nptr[1] == '\0')
-				return (2147483648);
 			neg *= -1;
-		}
 		i++;
 	}
+	if (nptr[i] == '\0')
+		return (2147483648);
 	while (nptr[i])
 	{
 		if (nptr[i] < '0' || nptr[i] > '9')
