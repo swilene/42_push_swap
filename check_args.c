@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:57:48 by saguesse          #+#    #+#             */
-/*   Updated: 2022/07/31 18:42:05 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/01 17:44:41 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,39 +33,63 @@ int	ft_checkdoubles(int size, t_list **lst)
 	return (0);
 }
 
+char	*ft_lstlist_a(char **argv, int i, t_list **list_a)
+{
+	ssize_t	nb;
+	t_list	*new;
+	t_list	*tmp;
+		
+	nb = ft_atoi(argv[i]);
+	if (nb < INT_MIN || nb > INT_MAX)
+		return (NULL);
+	if (i == 1)
+	{
+		(*list_a) = ft_lstnew(nb, (*list_a));
+		if (list_a == NULL)
+			return (NULL);
+	}
+	else
+	{
+		new = malloc(sizeof(t_list));
+		if (!new)
+			return (NULL);
+		tmp = (*list_a);
+		ft_lstadd_back(&tmp, new, nb);
+	}
+	return ("OK");
+}
+
 char	*check_args(int argc, char **argv)
 {
 	int		i;
-	ssize_t	nb;
-	t_list	*new;
-	t_list	*head;
+	t_list	*list_a;
 	t_list	*tmp;
 
 	i = 1;
-	head = NULL;
+	list_a = NULL;
 	while (i < argc)
 	{
-		nb = ft_atoi(argv[i]);
-		if (nb < INT_MIN || nb > INT_MAX)
-			return (ft_dellist(&head), NULL);
-		if (i == 1)
+		if (ft_lstlist_a(argv, i, &list_a) == NULL)
 		{
-			head = ft_lstnew(nb, head);
-			if (head == NULL)
-				return (NULL);
-		}
-		else
-		{
-			new = malloc(sizeof(t_list));
-			if (!new)
-				return (ft_dellist(&head), NULL);
-			tmp = head;
-			ft_lstadd_back(&tmp, new, nb);
+			if (list_a != NULL)
+				ft_dellist(&list_a);
+			return (NULL);
 		}
 		i++;
 	}
+	tmp = list_a;
 	if (ft_checkdoubles(i - 1, &tmp) == 1)
-		return (ft_dellist(&head), NULL);
-	ft_swap_a(&head);
+		return (ft_dellist(&list_a), NULL);
+	tmp = list_a;
+	ft_lstprint(tmp);
+	ft_swap_a(&list_a);
+	tmp = list_a;
+	ft_lstprint(tmp);
+	ft_rotate_a(&list_a);
+	tmp = list_a;
+	ft_lstprint(tmp);
+	ft_reverse_rotate_a(&list_a);
+	tmp = list_a;
+	ft_lstprint(tmp);
 	return ("OK");
 }
