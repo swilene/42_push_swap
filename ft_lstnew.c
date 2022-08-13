@@ -6,18 +6,18 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 09:51:29 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/01 17:32:33 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/08 15:43:05 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int nbr, t_list *head)
+char	*ft_lstnew(int nbr, t_list **head)
 {
-	head = malloc(sizeof(t_list));
-	if (!head)
+	(*head) = malloc(sizeof(t_list));
+	if (!(*head))
 		return (NULL);
-	head->next = NULL;
-	head->nb = nbr;
-	return (head);
+	(*head)->next = NULL;
+	(*head)->nb = nbr;
+	return ("OK");
 }

@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:57:48 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/01 17:44:41 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/13 14:52:52 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ char	*ft_lstlist_a(char **argv, int i, t_list **list_a)
 		return (NULL);
 	if (i == 1)
 	{
-		(*list_a) = ft_lstnew(nb, (*list_a));
-		if (list_a == NULL)
+		if (ft_lstnew(nb, &(*list_a)) == NULL)
 			return (NULL);
 	}
 	else
@@ -59,37 +58,37 @@ char	*ft_lstlist_a(char **argv, int i, t_list **list_a)
 	return ("OK");
 }
 
-char	*check_args(int argc, char **argv)
+int	ft_checksorted(t_list *lst)
+{
+	while (lst->next != NULL && lst->nb < lst->next->nb)
+		lst = lst->next;
+	if (lst->next == NULL)
+		return (1);
+	return (0);
+}
+
+int	ft_checkargs(int argc, char **argv, t_list **list_a)
 {
 	int		i;
-	t_list	*list_a;
 	t_list	*tmp;
 
 	i = 1;
-	list_a = NULL;
+	(*list_a) = NULL;
 	while (i < argc)
 	{
-		if (ft_lstlist_a(argv, i, &list_a) == NULL)
+		if (ft_lstlist_a(argv, i, &(*list_a)) == NULL)
 		{
-			if (list_a != NULL)
-				ft_dellist(&list_a);
-			return (NULL);
+			if ((*list_a) != NULL)
+				ft_dellist(&(*list_a));
+			return (1);
 		}
 		i++;
 	}
-	tmp = list_a;
+	tmp = (*list_a);
 	if (ft_checkdoubles(i - 1, &tmp) == 1)
-		return (ft_dellist(&list_a), NULL);
-	tmp = list_a;
-	ft_lstprint(tmp);
-	ft_swap_a(&list_a);
-	tmp = list_a;
-	ft_lstprint(tmp);
-	ft_rotate_a(&list_a);
-	tmp = list_a;
-	ft_lstprint(tmp);
-	ft_reverse_rotate_a(&list_a);
-	tmp = list_a;
-	ft_lstprint(tmp);
-	return ("OK");
+		return (ft_dellist(&(*list_a)), 1);
+	tmp = (*list_a);
+	if (ft_checksorted(tmp) == 1)
+		return (2);
+	return (0);
 }

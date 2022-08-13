@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 10:40:59 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/08 14:56:37 by saguesse         ###   ########.fr       */
+/*   Created: 2022/08/08 14:15:11 by saguesse          #+#    #+#             */
+/*   Updated: 2022/08/08 15:46:39 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstprint(t_list *lst)
+char	*ft_lstadd_front(t_list **lst, int nbr)
 {
-	while (lst)
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	
+	if ((*lst) == NULL)
 	{
-		ft_putnbr(lst->nb);
-		ft_putchar('\n');
-		lst = lst->next;
+		if (ft_lstnew(nbr, &(*lst)) == NULL)
+			return (NULL);
 	}
-	//ft_putstr_fd("-\n", 1);
-	//ft_putstr_fd(" a \n", 1);
+	new->next = (*lst);
+	new->nb = nbr;
+	(*lst) = new;
+	return ("OK");
 }
