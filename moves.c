@@ -6,13 +6,13 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:29:56 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/13 17:50:27 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/14 21:17:28 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstswap(t_list **lst)
+void	ft_lstswap(t_list **lst, int list)
 {
 	t_list	*tmp;
 	t_list	*third;
@@ -24,10 +24,13 @@ void	ft_lstswap(t_list **lst)
 	(*lst) = (*lst)->next;
 	(*lst)->next = tmp;
 	tmp->next = third;
-	ft_putstr_fd("sa\n", 1);
+	if (list == 1)
+		ft_putstr_fd("sa\n", 1);
+	else
+		ft_putstr_fd("sb\n", 1);
 }
 
-void	ft_lstrotate(t_list **lst)
+void	ft_lstrotate(t_list **lst, int list)
 {
 	t_list	*tmp;
 	t_list	*last;
@@ -36,17 +39,20 @@ void	ft_lstrotate(t_list **lst)
 	if ((*lst) == NULL || (*lst)->next == NULL)
 		return ;
 	if ((*lst)->next->next == NULL)
-		ft_lstswap(&(*lst));
+		ft_lstswap(&(*lst), list);
 	second = (*lst)->next;
 	tmp = (*lst);
 	last = ft_lstlast(tmp);
 	last->next = tmp;
 	tmp->next = NULL;
 	(*lst) = second;
-	ft_putstr_fd("ra\n", 1);
+	if (list == 1)
+		ft_putstr_fd("ra\n", 1);
+	else
+		ft_putstr_fd("rb\n", 1);
 }
 
-void	ft_lstreverse_rotate(t_list **lst)
+void	ft_lstreverse_rotate(t_list **lst, int list)
 {
 	t_list	*tmp;
 	t_list	*last;
@@ -55,7 +61,7 @@ void	ft_lstreverse_rotate(t_list **lst)
 	if ((*lst) == NULL || (*lst)->next == NULL)
 		return ;
 	if ((*lst)->next->next == NULL)
-		ft_lstswap(&(*lst));
+		ft_lstswap(&(*lst), list);
 	tmp = (*lst);
 	last = ft_lstlast(tmp);
 	tmp = (*lst);
@@ -63,7 +69,10 @@ void	ft_lstreverse_rotate(t_list **lst)
 	(*lst) = last;
 	(*lst)->next = tmp;
 	before_last->next = NULL;
-	ft_putstr_fd("rra\n", 1);
+	if (list == 1)
+		ft_putstr_fd("rra\n", 1);
+	else
+		ft_putstr_fd("rrb\n", 1);
 }
 
 char	*ft_lstpush_b(t_list **list_a, t_list **list_b)
