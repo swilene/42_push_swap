@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/08/01 17:18:34 by saguesse         ###   ########.fr        #
+#    Updated: 2022/08/15 17:37:40 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,22 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC =  push_swap.c \
-	ft_atoi.c \
-	ft_moves.c \
-	ft_lstnew.c \
-	ft_lstlast.c \
-	ft_lstadd_back.c \
-	ft_dellist.c \
+SRC = main.c \
+	push_swap.c \
 	check_args.c \
-	#ft_lstdelone.c \
-	ft_lstclear.c \#
+	ft_atoi.c \
+	ft_dellist.c \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstbeforelast.c \
+	ft_lstdelone.c \
+	ft_lstlast.c \
+	ft_lstnew.c \
+	ft_lstsize.c \
+	ft_putchar.c \
+	ft_putnbr.c \
+	ft_putstr_fd.c \
+	moves.c \
 
 HEADER = push_swap.h
 

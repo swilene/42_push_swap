@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:51:08 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/15 12:31:56 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/15 17:29:43 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	ft_bigsize(t_list **list_a, t_list **list_b, int size_a)
 		if (size_b > 2)
 		{
 			pos = ft_lstpos((*list_a)->nb, &(*list_b));
-			if (pos > 1 && pos < size_b/2)
+			printf("pos = %d\n", pos);
+			if (pos > 1 && pos <= size_b/2)
 			{
 				while (pos > 0)
 				{
@@ -78,6 +79,13 @@ void	ft_bigsize(t_list **list_a, t_list **list_b, int size_a)
 			}
 		}
 		ft_lstpush_b(&(*list_a), &(*list_b));
+		if (size_b == 1)
+		{
+			if ((*list_b)->nb < (*list_b)->next->nb)
+				ft_lstswap(&(*list_b), 2);
+		}
+		if (size_b == 2 && (*list_b)->nb < last_b->nb)
+			ft_lstrotate(&(*list_b), 2);
 		if (pos == 1)
 			ft_lstswap(&(*list_b), 2);
 		else if (pos == size_b)
@@ -85,39 +93,16 @@ void	ft_bigsize(t_list **list_a, t_list **list_b, int size_a)
 		size_a--;
 	}
 	ft_size3(&(*list_a));
-	ft_lstrotate(&(*list_a), 1);
-	while (*list_b)
+	if ((*list_b)->nb > (*list_a)->nb)
+		ft_lstrotate(&(*list_a), 1);
+	while ((*list_b) != NULL)
 	{
-		last_a = ft_lstlast(*list_a);
-		while ((*list_b) && (*list_b)->nb > last_a->nb)
+		while ((*list_b) && (*list_b)->nb < (*list_a)->nb)
 			ft_lstpush_a(&(*list_b), &(*list_a));
-		ft_lstreverse_rotate(&(*list_a), 1);
-	}
-}
-
-void	ft_size5(t_list **list_a, t_list **list_b, int size)
-{
-	int	min;
-	int	index;
-	t_list	*tmp;
-
-	tmp = (*list_a);
-	min = (*list_a)->nb;
-	while (tmp)
-	{
-		if (min > tmp->nb)
-			min = tmp->nb;
-		tmp = tmp->next;
-	}
-	index = ft_lstindex(&(*list_a), min);
-	while (min != (*list_a)->nb)
-	{
-		if (index < size)
-			ft_lstrotate(&(*list_a), 1);
-		else
+		last_a = ft_lstlast(*list_a);
+		if (last_a->nb < (*list_a)->nb)
 			ft_lstreverse_rotate(&(*list_a), 1);
 	}
-	ft_lstpush_b(&(*list_a), &(*list_b));
 }
 
 char	*ft_pushswap(t_list **list_a, t_list **list_b)
@@ -127,20 +112,11 @@ char	*ft_pushswap(t_list **list_a, t_list **list_b)
 	size = ft_lstsize(*list_a);
 	if (size == 1)
 		write(1, "\n", 1);
-	if (size == 2)
+	else if (size == 2)
 		ft_lstswap(&(*list_a), 1);
-	if (size == 3)
+	else if (size == 3)
 		ft_size3(&(*list_a));
-	if (size == 5)
-	{
-		ft_size5(&(*list_a), &(*list_b), size - 1);
-		ft_size5(&(*list_a), &(*list_b), size - 2);
-		ft_size3(&(*list_a));
-		while (*list_b)
-			ft_lstpush_a(&(*list_b), &(*list_a));
-	}
-	if (size > 5)
+	else
 		ft_bigsize(&(*list_a), &(*list_b), size);
-	//ft_lstprint(*list_a);
 	return ("OK");
 }
