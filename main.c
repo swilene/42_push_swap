@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:52:26 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/13 17:03:37 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:51:49 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("\n", 2);
 		return (1);
 	}
-	ft_pushswap(&list_a, &list_b);
+	if (ft_pushswap(&list_a, &list_b) == NULL)
+		return (1);
 	ft_dellist(&list_a);
 	return (0);
 }

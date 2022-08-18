@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/08/15 17:37:40 by saguesse         ###   ########.fr        #
+#    Updated: 2022/08/17 18:45:54 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRC = main.c \
 	push_swap.c \
+	big_list.c
 	check_args.c \
 	ft_atoi.c \
 	ft_dellist.c \

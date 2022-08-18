@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 14:15:11 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/08 15:46:39 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:01:40 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*ft_lstadd_front(t_list **lst, int nbr)
 
 	new = malloc(sizeof(t_list));
 	if (!new)
-		return (NULL);
-	
+		return (ft_dellist(lst), NULL);
 	if ((*lst) == NULL)
 	{
 		if (ft_lstnew(nbr, &(*lst)) == NULL)

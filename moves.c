@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:29:56 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/14 21:17:28 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/17 19:02:31 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ char	*ft_lstpush_b(t_list **list_a, t_list **list_b)
 	if ((*list_b) == NULL)
 	{
 		if (ft_lstnew((*list_a)->nb, &(*list_b)) == NULL)
-			return (NULL);
+			return (ft_dellist(list_a), NULL);
 	}
 	else if (ft_lstadd_front(&(*list_b), (*list_a)->nb) == NULL)
-		return (NULL);
+		return (ft_dellist(list_a), NULL);
 	ft_lstdelone(&(*list_a));
 	ft_putstr_fd("pb\n", 1);
 	return ("OK");
@@ -98,10 +98,10 @@ char	*ft_lstpush_a(t_list **list_b, t_list **list_a)
 	if ((*list_a) == NULL)
 	{
 		if (ft_lstnew((*list_b)->nb, &(*list_a)) == NULL)
-			return (NULL);
+			return (ft_dellist(list_b), NULL);
 	}
 	else if (ft_lstadd_front(&(*list_a), (*list_b)->nb) == NULL)
-		return (NULL);
+		return (ft_dellist(list_b), NULL);
 	ft_lstdelone(&(*list_b));
 	ft_putstr_fd("pa\n", 1);
 	return ("OK");
