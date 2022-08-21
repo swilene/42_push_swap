@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:44:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/17 19:16:29 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/21 17:31:12 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ char	*ft_pushswap(t_list **list_a, t_list **list_b);
 char	*ft_bigsize(t_list **list_a, t_list **list_b, int size_a);
 int	ft_lstindex(t_list **lst, int nbr);
 void	ft_size3(t_list **list_a);
+int	ft_lstmin(t_list **lst);
 
 #endif
