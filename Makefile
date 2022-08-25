@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/08/24 16:34:28 by saguesse         ###   ########.fr        #
+#    Updated: 2022/08/25 16:06:11 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,13 @@ CC = gcc -g3
 CFLAGS = -Wall -Werror -Wextra
 
 SRC = main.c \
+	ft_lstmoves_costs.c \
 	big_list.c \
 	ft_lstmin.c \
 	check_args.c \
 	ft_atoi.c \
 	ft_dellist.c \
 	ft_lstadd_back.c \
-	ft_lstadd_front.c \
 	ft_lstbeforelast.c \
 	ft_lstdelone.c \
 	ft_lstlast.c \
@@ -33,6 +33,7 @@ SRC = main.c \
 	ft_putchar.c \
 	ft_putnbr.c \
 	ft_putstr_fd.c \
+	ft_lstpos.c \
 	moves.c \
 	push_swap.c \
 

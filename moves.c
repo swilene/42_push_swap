@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:29:56 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/24 17:37:52 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/25 12:04:00 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,25 +75,6 @@ void	ft_lstreverse_rotate(t_list **lst, int list)
 		ft_putstr_fd("rrb\n", 1);
 }
 
-/*char	*ft_lstpush(t_list **pull, t_list **push, int list)
-{
-	if ((*pull) == NULL)
-		return ("vide");
-	if ((*push) == NULL)
-	{
-		if (ft_lstnew((*pull)->nb, (*pull)->index, push) == NULL)
-			return (NULL);
-	}
-	else if (ft_lstadd_front(push, (*pull)->nb, (*pull)->index) == NULL)
-		return (ft_dellist(pull), NULL);
-	ft_lstdelone(pull);
-	if (list == 1)
-		ft_putstr_fd("pa\n", 1);
-	else
-		ft_putstr_fd("pb\n", 1);
-	return ("OK");
-}*/
-
 void	ft_lstpush(t_list **pull, t_list **push, int list)
 {
 	t_list	*tmp_pull;
@@ -103,7 +84,7 @@ void	ft_lstpush(t_list **pull, t_list **push, int list)
 		return ;
 	if ((*push) == NULL)
 	{
-		tmp_pull = (*pull);	
+		tmp_pull = (*pull);
 		(*pull) = (*pull)->next;
 		(*push) = tmp_pull;
 		(*push)->next = NULL;
