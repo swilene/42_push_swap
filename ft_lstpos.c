@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 11:40:57 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 16:50:15 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:55:39 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ int	ft_lista_pos(int index, t_list *list_a, int pos)
 	}
 	else
 	{
-		while (tmp->next != NULL && !(index > tmp->index && index < tmp->next->index))
+		while (tmp->next != NULL && !(index > tmp->index
+				&& index < tmp->next->index))
 		{
 			pos++;
 			tmp = tmp->next;
@@ -81,23 +82,21 @@ void	ft_lstpos_wanted(t_list *list_a, t_list *list_b)
 	}
 }
 
-void	ft_lstpos(t_list *list_a, t_list *list_b)
+void	ft_lstpos(t_list **list_a, t_list **list_b)
 {
 	int		pos;
 	t_list	*tmp;
 
 	pos = 0;
-	tmp = list_a;
+	tmp = (*list_a);
 	while (tmp)
 	{
 		tmp->pos = pos;
 		pos++;
 		tmp = tmp->next;
 	}
-	if (list_b == NULL)
-		return ;
 	pos = 0;
-	tmp = list_b;
+	tmp = (*list_b);
 	while (tmp)
 	{
 		tmp->pos = pos;

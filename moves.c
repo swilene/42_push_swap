@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 16:29:56 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 12:04:00 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/26 11:04:46 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_lstrotate(t_list **lst, int list)
 	(*lst) = second;
 	if (list == 1)
 		ft_putstr_fd("ra\n", 1);
-	else
+	else if (list == 2)
 		ft_putstr_fd("rb\n", 1);
 }
 
@@ -71,7 +71,7 @@ void	ft_lstreverse_rotate(t_list **lst, int list)
 	before_last->next = NULL;
 	if (list == 1)
 		ft_putstr_fd("rra\n", 1);
-	else
+	else if (list == 2)
 		ft_putstr_fd("rrb\n", 1);
 }
 

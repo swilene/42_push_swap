@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:44:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 16:06:24 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:08:52 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_lstposmin_a(t_list *list_a, int pos);
 void	ft_lstadd_back(t_list **lst, t_list *new, int nb);
 void	ft_lstprint_a(t_list *lst);
 void	ft_lstprint_b(t_list *lst);
-char	*ft_lstnew(int nbr, int i, t_list **head);
+char	*ft_lstnew(int nbr, t_list **head);
 void	ft_dellist(t_list **lst);
 void	ft_lstdelone(t_list **lst);
 void	ft_putstr_fd(char *s, int fd);
@@ -54,7 +54,7 @@ ssize_t	ft_atoi(const char *nptr );
 int		ft_putnbr(int n);
 int		ft_putchar(char c);
 void	ft_lstindex(t_list *lst, int size);
-void	ft_lstpos(t_list *list_a, t_list *list_b);
+void	ft_lstpos(t_list **list_a, t_list **list_b);
 void	ft_lstpos_wanted(t_list *list_a, t_list *list_b);
 void	ft_lstmoves_costs(t_list **list_a, t_list **list_b);
 

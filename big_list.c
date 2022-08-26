@@ -6,11 +6,23 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:17:32 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 16:22:06 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/26 14:12:57 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_push_to_a(t_list **list_a, t_list **list_b)
+{
+	while (*list_b)
+	{
+		ft_lstpos(list_a, list_b);
+		printf("\nLIST A = \n");
+		ft_lstprint_a(*list_a);
+		ft_lstpos_wanted(*list_a, *list_b);
+		ft_lstmoves_costs(list_a, list_b);
+	}
+}
 
 void	ft_bigsize(t_list **list_a, t_list **list_b, int size_a)
 {
@@ -37,7 +49,5 @@ void	ft_bigsize(t_list **list_a, t_list **list_b, int size_a)
 		size_a = ft_lstsize(*list_a);
 	}
 	ft_size3(list_a);
-	ft_lstpos(*list_a, *list_b);
-	ft_lstpos_wanted(*list_a, *list_b);
-	ft_lstmoves_costs(list_a, list_b);
+	ft_push_to_a(list_a, list_b);
 }

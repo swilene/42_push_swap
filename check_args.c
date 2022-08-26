@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:57:48 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/24 17:12:12 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/26 09:41:28 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_lstlist_a(char **argv, int i, t_list **list_a)
 		return (NULL);
 	if (i == 1)
 	{
-		if (ft_lstnew(nb, 0, list_a) == NULL)
+		if (ft_lstnew(nb, list_a) == NULL)
 			return (NULL);
 	}
 	else
