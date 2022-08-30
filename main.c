@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:52:26 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 12:16:23 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:40:45 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int argc, char **argv)
 	ft_pushswap(&list_a, &list_b);
 	printf("\nLIST A = \n");
 	ft_lstprint_a(list_a);
-	printf("\nLIST B = \n");
-	ft_lstprint_b(list_b);
+	/*printf("\nLIST B = \n");
+	ft_lstprint_b(list_b);*/
 	ft_dellist(&list_a);
 	return (0);
 }
