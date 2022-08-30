@@ -6,7 +6,7 @@
 #    By: saguesse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 09:58:29 by saguesse          #+#    #+#              #
-#    Updated: 2022/08/25 16:06:11 by saguesse         ###   ########.fr        #
+#    Updated: 2022/08/30 22:58:14 by saguesse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = main.c \
 	ft_lstmoves_costs.c \
 	big_list.c \
 	ft_lstmin.c \
+	ft_lstmax.c \
 	check_args.c \
 	ft_atoi.c \
 	ft_dellist.c \

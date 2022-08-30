@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:32:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/30 19:07:26 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/30 23:21:16 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_list	*ft_best_move(t_list *list_b)
 	tmp = list_b;
 	while (tmp && index_min != tmp->index)
 		tmp = tmp->next;
-	printf("best move de %d =\nmove a = %d\nmove b = %d\n", tmp->index, tmp->move_a, tmp->move_b);
 	return (tmp);
 }
 
@@ -67,8 +66,6 @@ void	ft_push_min(t_list **list_a, t_list **list_b, int size_b)
 			ft_putstr_fd("rr\n", 1);
 			lst->move_b--;
 			lst->move_a--;
-			printf("move_b = %d\n", lst->move_b);
-			printf("move_a = %d\n", lst->move_a);
 		}
 	}
 	if (lst->move_b < 0)
@@ -104,8 +101,6 @@ void	ft_push_min(t_list **list_a, t_list **list_b, int size_b)
 		}
 	}
 	ft_lstpush(list_b, list_a, 1);
-	printf("LIST_A =\n");
-	ft_lstprint_a(*list_a);
 }
 
 
@@ -135,7 +130,5 @@ void	ft_lstmoves_costs(t_list **list_a, t_list **list_b)
 			tmp->move_a = 0;
 		tmp = tmp->next;
 	}
-	printf("LIST_B =\n");
-	ft_lstprint_b(*list_b);
 	ft_push_min(list_a, list_b, size_b);
 }

@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:44:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/26 14:08:52 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/30 22:57:52 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		ft_checksorted(t_list *lst);
 void	ft_lstpush(t_list **pull, t_list **push, int list);
 t_list	*ft_lstbeforelast(t_list *lst);
 t_list	*ft_lstmin(t_list *lst);
+t_list	*ft_lstmax(t_list *lst);
 int		ft_lstposmin_a(t_list *list_a, int pos);
 void	ft_lstadd_back(t_list **lst, t_list *new, int nb);
 void	ft_lstprint_a(t_list *lst);

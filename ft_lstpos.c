@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 11:40:57 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/30 18:34:07 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/30 23:15:00 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,17 @@ int	ft_lstposmin_a(t_list *list_a, int pos)
 int	ft_lista_pos(int index, t_list *list_a, int pos)
 {
 	t_list	*tmp;
-	int		min_a;
+	t_list	*min_a;
+	t_list	*max_a;
 
 	tmp = list_a;
-	min_a = ft_lstmin(list_a)->index;
-	if (index < min_a)
-		pos = ft_lstmin(list_a)->pos;
+	min_a = ft_lstmin(list_a);
+	max_a = ft_lstmax(list_a);
+	//printf("max = %d\n", max_a->index);
+	if (index < min_a->index)
+		pos = min_a->pos;
+	else if (index > max_a->index)
+		pos = max_a->pos + 1;
 	else
 	{
 		while (tmp->next != NULL && !(index > tmp->index
@@ -45,6 +50,7 @@ int	ft_lista_pos(int index, t_list *list_a, int pos)
 			tmp = tmp->next;
 		pos = tmp->pos + 1;
 	}
+	//printf("pos de %d = %d\n", index, pos);
 	if (pos == ft_lstsize(list_a))
 		pos = 0;
 	return (pos);
@@ -103,4 +109,6 @@ void	ft_lstpos(t_list **list_a, t_list **list_b)
 		pos++;
 		tmp = tmp->next;
 	}
+	//printf("LIST_A =\n");
+	//ft_lstprint_a(*list_a);
 }
