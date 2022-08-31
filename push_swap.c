@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 10:51:08 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/25 12:00:10 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:05:08 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_lstindex(t_list *lst, int size)
 	min->index = 1;
 	tmp = lst;
 	i = 2;
+	//printf("min->nb = %d\n", min->nb);
 	while (i <= size)
 	{
 		tmp = lst;
@@ -35,6 +36,8 @@ void	ft_lstindex(t_list *lst, int size)
 			tmp = tmp->next;
 		}
 		min->index = i;
+		//printf("min->nb = %d\n", min->nb);
+		//printf("min->index = %d\n\n", min->index);
 		i++;
 	}
 }

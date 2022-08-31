@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:32:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/30 23:21:16 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/08/31 17:12:40 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,18 @@ t_list	*ft_best_move(t_list *list_b)
 	tmp = list_b;
 	while (tmp && index_min != tmp->index)
 		tmp = tmp->next;
+	//printf("best move = %d avec %d mouvements\n", tmp->nb, move_min);
 	return (tmp);
 }
 
-void	ft_push_min(t_list **list_a, t_list **list_b, int size_b)
+void	ft_push_min(t_list **list_a, t_list **list_b)
 {
 	t_list	*lst;
 
 	lst = ft_best_move(*list_b);
-	if (lst->move_a == size_b / 2 && ((lst->move_b < 0 && lst->move_a > 0)
-			|| (lst->move_b > 0 && lst->move_a < 0)))
-			lst->move_b *= -1;
-	if (lst->pos_wanted == 0 && lst->index > (*list_a)->index)
-		ft_lstrotate(list_a, 1);
 	if (lst->move_b < 0 && lst->move_a < 0)
 	{
-		while (lst->move_b != 0 && lst->move_a != 0)
+		while (lst->move_b <= 0 && lst->move_a <= 0)
 		{
 			ft_lstreverse_rotate(list_b, 3);
 			ft_lstreverse_rotate(list_a, 3);
@@ -57,9 +53,9 @@ void	ft_push_min(t_list **list_a, t_list **list_b, int size_b)
 			lst->move_a++;
 		}
 	}
-	else if (lst->move_b != 0 && lst->move_a != 0)
+	else if (lst->move_b > 0 && lst->move_a > 0)
 	{
-		while (lst->move_b > 0 && lst->move_a > 0)
+		while (lst->move_b >= 0 && lst->move_a >= 0)
 		{
 			ft_lstrotate(list_b, 3);
 			ft_lstrotate(list_a, 3);
@@ -101,6 +97,8 @@ void	ft_push_min(t_list **list_a, t_list **list_b, int size_b)
 		}
 	}
 	ft_lstpush(list_b, list_a, 1);
+	//printf("LIST A =\n");
+	//ft_lstprint_a(*list_a);
 }
 
 
@@ -130,5 +128,7 @@ void	ft_lstmoves_costs(t_list **list_a, t_list **list_b)
 			tmp->move_a = 0;
 		tmp = tmp->next;
 	}
-	ft_push_min(list_a, list_b, size_b);
+	//printf("LIST B =\n");
+	//ft_lstprint_b(*list_b);
+	ft_push_min(list_a, list_b);
 }
