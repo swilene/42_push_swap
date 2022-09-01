@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 14:57:48 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/26 09:41:28 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:29:26 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int	ft_checkargs(int argc, char **argv, t_list **list_a)
 		return (ft_dellist(list_a), 1);
 	tmp = (*list_a);
 	if (ft_checksorted(tmp) == 0)
-		return (2);
+		return (ft_dellist(list_a), 2);
 	return (0);
 }

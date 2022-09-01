@@ -6,7 +6,7 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 11:17:32 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/31 16:48:57 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/09/01 12:53:53 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,12 @@ void	ft_push_to_a(t_list **list_a, t_list **list_b)
 		ft_lstpos(list_a, list_b);
 		ft_lstpos_wanted(*list_a, *list_b);
 		ft_lstmoves_costs(list_a, list_b);
-		/*printf("LIST A =\n");
-		ft_lstprint_a(*list_a);*/
-		/*printf("LIST B =\n");
-		ft_lstprint_b(*list_b);*/
 	}
-	//printf("LIST A =\n");
-	//ft_lstprint_a(*list_a);
 	min = ft_lstmin(*list_a)->index;
 	while (ft_checksorted(*list_a) != 0)
 	{
 		if (min <= ft_lstsize(*list_a))
-			ft_lstrotate(list_a, 1);
+			ft_lstreverse_rotate(list_a, 1);
 		else
 			ft_lstrotate(list_a, 1);
 	}

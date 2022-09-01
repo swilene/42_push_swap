@@ -6,27 +6,11 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 11:40:57 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/30 23:15:00 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/09/01 13:00:05 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//	calculate the position of the smallest element in a
-int	ft_lstposmin_a(t_list *list_a, int pos)
-{
-	t_list	*tmp;
-	int		min_a;
-
-	tmp = list_a;
-	min_a = ft_lstmin(list_a)->index;
-	while (tmp->nb != min_a)
-	{
-		pos++;
-		tmp = tmp->next;
-	}
-	return (pos);
-}
 
 //	calculate the position wanted of an element if list a is not sorted
 int	ft_lista_pos(int index, t_list *list_a, int pos)
@@ -38,7 +22,6 @@ int	ft_lista_pos(int index, t_list *list_a, int pos)
 	tmp = list_a;
 	min_a = ft_lstmin(list_a);
 	max_a = ft_lstmax(list_a);
-	//printf("max = %d\n", max_a->index);
 	if (index < min_a->index)
 		pos = min_a->pos;
 	else if (index > max_a->index)
@@ -50,7 +33,6 @@ int	ft_lista_pos(int index, t_list *list_a, int pos)
 			tmp = tmp->next;
 		pos = tmp->pos + 1;
 	}
-	//printf("pos de %d = %d\n", index, pos);
 	if (pos == ft_lstsize(list_a))
 		pos = 0;
 	return (pos);
@@ -109,6 +91,4 @@ void	ft_lstpos(t_list **list_a, t_list **list_b)
 		pos++;
 		tmp = tmp->next;
 	}
-	//printf("LIST_A =\n");
-	//ft_lstprint_a(*list_a);
 }

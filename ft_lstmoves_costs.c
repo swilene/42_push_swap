@@ -6,12 +6,13 @@
 /*   By: saguesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:32:36 by saguesse          #+#    #+#             */
-/*   Updated: 2022/08/31 17:12:40 by saguesse         ###   ########.fr       */
+/*   Updated: 2022/09/01 15:23:20 by saguesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//	find the element with the smallest amount of moves
 t_list	*ft_best_move(t_list *list_b)
 {
 	int		move_min;
@@ -33,53 +34,12 @@ t_list	*ft_best_move(t_list *list_b)
 	tmp = list_b;
 	while (tmp && index_min != tmp->index)
 		tmp = tmp->next;
-	//printf("best move = %d avec %d mouvements\n", tmp->nb, move_min);
 	return (tmp);
 }
 
-void	ft_push_min(t_list **list_a, t_list **list_b)
+//	move just a (ra and rra)
+void	ft_moves_a(t_list **list_a, t_list *lst)
 {
-	t_list	*lst;
-
-	lst = ft_best_move(*list_b);
-	if (lst->move_b < 0 && lst->move_a < 0)
-	{
-		while (lst->move_b <= 0 && lst->move_a <= 0)
-		{
-			ft_lstreverse_rotate(list_b, 3);
-			ft_lstreverse_rotate(list_a, 3);
-			ft_putstr_fd("rrr\n", 1);
-			lst->move_b++;
-			lst->move_a++;
-		}
-	}
-	else if (lst->move_b > 0 && lst->move_a > 0)
-	{
-		while (lst->move_b >= 0 && lst->move_a >= 0)
-		{
-			ft_lstrotate(list_b, 3);
-			ft_lstrotate(list_a, 3);
-			ft_putstr_fd("rr\n", 1);
-			lst->move_b--;
-			lst->move_a--;
-		}
-	}
-	if (lst->move_b < 0)
-	{
-		while (lst->move_b != 0)
-		{
-			ft_lstreverse_rotate(list_b, 2);
-			lst->move_b++;
-		}
-	}
-	else if (lst->move_b > 0)
-	{
-		while (lst->move_b != 0)
-		{
-			ft_lstrotate(list_b, 2);
-			lst->move_b--;
-		}
-	}
 	if (lst->move_a < 0)
 	{
 		while (lst->move_a != 0)
@@ -96,11 +56,59 @@ void	ft_push_min(t_list **list_a, t_list **list_b)
 			lst->move_a--;
 		}
 	}
-	ft_lstpush(list_b, list_a, 1);
-	//printf("LIST A =\n");
-	//ft_lstprint_a(*list_a);
 }
 
+//	move just b (rb and rrb)
+void	ft_moves_b(t_list **list_b, t_list *lst)
+{
+	if (lst->move_b < 0)
+	{
+		while (lst->move_b != 0)
+		{
+			ft_lstreverse_rotate(list_b, 2);
+			lst->move_b++;
+		}
+	}
+	else if (lst->move_b > 0)
+	{
+		while (lst->move_b != 0)
+		{
+			ft_lstrotate(list_b, 2);
+			lst->move_b--;
+		}
+	}
+}
+
+//	move a and b together (rr and rrr)
+//	push the element with the smallest number of moves
+void	ft_push_min(t_list **list_a, t_list **list_b, t_list *lst)
+{
+	if (lst->move_b < 0 && lst->move_a < 0)
+	{
+		while (lst->move_b != 0 && lst->move_a != 0)
+		{
+			ft_lstreverse_rotate(list_b, 3);
+			ft_lstreverse_rotate(list_a, 3);
+			ft_putstr_fd("rrr\n", 1);
+			lst->move_b++;
+			lst->move_a++;
+		}
+	}
+	else if (lst->move_b > 0 && lst->move_a > 0)
+	{
+		while (lst->move_b != 0 && lst->move_a != 0)
+		{
+			ft_lstrotate(list_b, 3);
+			ft_lstrotate(list_a, 3);
+			ft_putstr_fd("rr\n", 1);
+			lst->move_b--;
+			lst->move_a--;
+		}
+	}
+	ft_moves_b(list_b, lst);
+	ft_moves_a(list_a, lst);
+	ft_lstpush(list_b, list_a, 1);
+}
 
 //	calculate how many moves we need to move each number of b
 //		at the top of b
@@ -128,7 +136,5 @@ void	ft_lstmoves_costs(t_list **list_a, t_list **list_b)
 			tmp->move_a = 0;
 		tmp = tmp->next;
 	}
-	//printf("LIST B =\n");
-	//ft_lstprint_b(*list_b);
-	ft_push_min(list_a, list_b);
+	ft_push_min(list_a, list_b, ft_best_move(*list_b));
 }
